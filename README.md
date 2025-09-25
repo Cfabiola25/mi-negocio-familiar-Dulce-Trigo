@@ -21,17 +21,6 @@ Este proyecto académico modela la **base de datos completa** que permite gestio
 
 ---
 
-## 📂 Estructura del Repositorio
-/mi-negocio-familiar/
-├── README.md # Descripción del negocio
-├── diagrama_relacional.mmd # Modelo Entidad-Relación (Mermaid/ChartDB)
-├── crear_tablas.sql # Definición de tablas y llaves
-├── insertar_datos.sql # Registros de prueba (30+)
-├── consultas_complejas.sql # 10 consultas avanzadas con JOINs
-└── documentacion_llaves.md # PK, CK y FK documentadas
-
----
-
 ## 👥 Autores
 - **Nelly Fabiola Cano Oviedo** — Ingeniería de Software, FESC  
 - **Néstor Iván Granados Valenzuela** — Ingeniería de Software, FESC  
