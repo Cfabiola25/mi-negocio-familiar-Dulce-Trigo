@@ -1,0 +1,102 @@
+Table CATEGORIAS {
+  id_categoria int [pk]
+  nombre varchar [unique]
+}
+
+Table PRODUCTOS {
+  id_producto int [pk]
+  sku varchar [unique]
+  nombre varchar
+  talla varchar
+  presentacion varchar
+  id_categoria int [ref: > CATEGORIAS.id_categoria]
+  precio numeric
+  activo boolean
+}
+
+Table PROVEEDORES {
+  id_proveedor int [pk]
+  nit varchar [unique]
+  nombre varchar
+  email varchar
+  telefono varchar
+}
+
+Table CLIENTES {
+  id_cliente int [pk]
+  documento varchar [unique]
+  nombres varchar
+  apellidos varchar
+  email varchar
+  telefono varchar
+}
+
+Table EMPLEADOS {
+  id_empleado int [pk]
+  documento varchar [unique]
+  nombres varchar
+  apellidos varchar
+  email varchar
+  telefono varchar
+  cargo varchar
+}
+
+Table COMPRAS {
+  id_compra int [pk]
+  numero_factura varchar [unique]
+  fecha date
+  id_proveedor int [ref: > PROVEEDORES.id_proveedor]
+  total numeric
+}
+
+Table DETALLE_COMPRA {
+  id_detalle_compra int [pk]
+  id_compra int [ref: > COMPRAS.id_compra]
+  id_producto int [ref: > PRODUCTOS.id_producto]
+  cantidad numeric
+  costo_unitario numeric
+}
+
+Table INVENTARIO {
+  id_inventario int [pk]
+  id_producto int [ref: > PRODUCTOS.id_producto]
+  lote varchar
+  vencimiento date
+  stock numeric
+}
+
+Table VENTAS {
+  id_venta int [pk]
+  numero_factura varchar [unique]
+  fecha date
+  id_cliente int [ref: > CLIENTES.id_cliente]
+  id_empleado int [ref: > EMPLEADOS.id_empleado]
+  total numeric
+  canal varchar
+}
+
+Table DETALLE_VENTA {
+  id_detalle int [pk]
+  id_venta int [ref: > VENTAS.id_venta]
+  id_producto int [ref: > PRODUCTOS.id_producto]
+  cantidad numeric
+  precio_unitario numeric
+  subtotal numeric
+}
+
+Table PEDIDOS {
+  id_pedido int [pk]
+  fecha_hora timestamp
+  id_cliente int [ref: > CLIENTES.id_cliente]
+  id_empleado int [ref: > EMPLEADOS.id_empleado]
+  estado varchar
+  direccion varchar
+}
+
+Table DETALLE_PEDIDO {
+  id_detalle_pedido int [pk]
+  id_pedido int [ref: > PEDIDOS.id_pedido]
+  id_producto int [ref: > PRODUCTOS.id_producto]
+  cantidad numeric
+  precio_unitario numeric
+}
